@@ -9,23 +9,27 @@ public class UIController : MonoBehaviour {
     [SerializeField] private Text CoinCounter;
     [SerializeField] private PopUp popUp;
 
+
+    
     private int CoinDrop;
     private int Wallet;
-    private CoinCollect CoinCollider;
+    static bool CoinUpdate;
 
 
 	// Use this for initialization
 	void Start () {
 
         popUp.Close();
-        
-        
+        CoinUpdate = CoinCollect.RenderEnable;
+
+
     }
 	
 	// Update is called once per frame
 	void Update () {
 
-        
+
+      
 
     }
 
@@ -36,22 +40,27 @@ public class UIController : MonoBehaviour {
 
 
 
-    public void WalletUpdate()
+    public int WalletUpdate(int CoinDrop, int Wallet)
     {
-        CoinDrop = CoinCollect.coinPurse;
+   
+        Wallet += CoinDrop;
 
-        if (!CoinCollect._OnOrOff)
-        {
-            Wallet += CoinDrop;
-            CoinCounter.text = Wallet.ToString();
-            Debug.Log(Wallet);
-            CoinCollect._OnOrOff = true;
-            CoinDrop = 0;
-            
-        }
+        return Wallet;
+    }
+
+    public void WalletDisplay(int Wallet)
+    {
+
         
+
+
 
     }
 
+    public void OnGUI()
+    {
 
+        CoinCounter.text = Wallet.ToString();
+
+    }
 }
