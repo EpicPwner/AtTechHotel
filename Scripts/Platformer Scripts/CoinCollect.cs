@@ -62,7 +62,7 @@ public class CoinCollect : UIController {
         }
         else if (dropProb >= 97 && dropProb < 100)
         {
-            TotalDrop = Random.Range(456, 1000);
+            TotalDrop = Random.Range(456, 9000)
         }
 
         
