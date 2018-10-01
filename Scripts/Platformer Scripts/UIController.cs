@@ -1,10 +1,10 @@
-﻿using System.Collections;
+using System.Collections;
 using UnityEngine.UI;
 using UnityEngine;
 
 public class UIController : MonoBehaviour {
 
-    [Header("Linkage")]
+    [Header("Links")]
     [SerializeField] private Text DeathCounter;
     [SerializeField] private Text CoinCounter;
     [SerializeField] private PopUp popUp;
@@ -27,7 +27,13 @@ public class UIController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+		
+		if (CoinUpdate == false){
+		
+			WalletDisplay();
+			CoinUpdate = true;
+			
+		}
 
       
 
@@ -44,16 +50,17 @@ public class UIController : MonoBehaviour {
     {
    
         Wallet += CoinDrop;
+	
 
         return Wallet;
     }
 
-    public void WalletDisplay(int Wallet)
+    public void WalletDisplay()
     {
 
         
-
-
+	WalletUpdate(CoinDrop, Wallet);
+	Debug.Log(Wallet);
 
     }
 
